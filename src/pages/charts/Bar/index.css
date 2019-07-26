@@ -1,0 +1,105 @@
+svg {
+  width: 500px;
+  height: 500px;
+}
+.top-label {
+  font-size: 13px;
+  font-style: italic;
+  text-transform: uppercase;
+  float: left;
+}
+.age-label {
+  text-align: right;
+  font-weight: bold;
+  width: 90px;
+  padding-right: 10px;
+}
+.clearfix {
+  clear: both;
+}
+.bar {
+  fill: DarkSlateBlue;
+}
+
+.buttons-container {
+  width: 520px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.buttons-container > div {
+  float: left;
+  margin-right: .5em;
+  cursor: pointer;
+}
+.selected {
+  font-weight: bold;
+}
+
+.play-button {
+  margin-left: 10px;
+  margin-bottom: 15px;
+  font-style: italic;
+  cursor: pointer;
+  color: gray;
+}
+.play-button:hover {
+  color: black;
+}
+
+
+
+/*对 markdown 样式的补充*/
+pre {
+  display: block;
+  padding: 10px;
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #abb2bf;
+  background: #282c34;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: auto;
+}
+h1,h2,h3,h4,h5,h6{
+  margin-top: 1em;
+  /* margin-bottom: 1em; */
+}
+strong {
+  font-weight: bold;
+}
+
+p > code:not([class]) {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+p img{
+  /* 图片居中 */
+  margin: 0 auto;
+  display: flex;
+}
+
+#markdown-wrap {
+  font-family: "Microsoft YaHei",  'sans-serif';
+  font-size: 16px;
+  line-height: 30px;
+}
+
+#markdown-wrap .desc ul,
+#markdown-wrap .desc ol {
+  color: #333333;
+  margin: 1.5em 0 0 25px;
+}
+
+#markdown-wrap .desc h1,
+#markdown-wrap .desc h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+#markdown-wrap .desc a {
+  color: #009a61;
+}
