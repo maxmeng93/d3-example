@@ -75,7 +75,7 @@ class Bar extends React.Component {
       bars.data(popData, keys)
         .transition()
         // .delay(500) // 动画延时
-        .duration(500) // 动画持续时间
+        // .duration(500) // 动画持续时间
         // .ease(d3.easeBounce)
         .attr('width', d => x(d.value))
     }
@@ -175,7 +175,7 @@ class Bar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="content">
         <h1>柱状图</h1>
         <div ref="chart-wrap"></div>
         <div 
