@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Charts() {
   return (
     <div>
-      <h1>图表列表</h1>
+      <h2>图表列表</h2>
       <ul>
         <li><Link to="/line">折线图/面积图</Link></li>
         <li><Link to="/bar">柱状/条形图</Link></li>

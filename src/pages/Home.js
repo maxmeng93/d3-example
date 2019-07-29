@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 import Charts from '../components/Charts';
 
 function App() {
   return (
-    <div class="content">
-      <h2>首页</h2>
+    <div className="content">
+      <h1>首页</h1>
       <Charts></Charts>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as d3 from 'd3';
 
 import Markdonw from '@/components/Markdonw';
@@ -159,6 +160,7 @@ class Bar extends React.Component {
   render() {
     return (
       <div className="content">
+        <span><Link to="/">Home</Link></span>
         <h1>柱状图</h1>
         <div ref="chart-wrap"></div>
         <Markdonw markdown={this.state.markdown}></Markdonw>
