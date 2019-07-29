@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import Routes from './router/';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
+import 'highlight.js/styles/github-gist.css';
 
 ReactDOM.render(<Routes />, document.getElementById('root'));
 

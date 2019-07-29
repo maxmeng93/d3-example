@@ -4,6 +4,10 @@
 
 ``` javascript
 var a = 111;
+
+function getData () {
+  return {};
+}
 ```
 
 | 一个普通标题 | 一个普通标题 | 一个普通标题 |
