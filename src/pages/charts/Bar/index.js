@@ -1,13 +1,11 @@
 import React from 'react';
-import * as d3 from "d3";
-import marked from 'marked';
-import hljs from 'highlight.js';
+import * as d3 from 'd3';
+
+import Markdonw from '@/components/Markdonw';
 
 import md from './index.md';
 import csv from './index.csv';
-
 import './index.css';
-
 
 class Bar extends React.Component {
   constructor(props) {
@@ -18,29 +16,14 @@ class Bar extends React.Component {
   }
 
   componentDidMount() {
-    this.markedSetting();
-    d3.csv(csv).then(data => this.renderChart(data));
+    this.getData();
   }
 
-  markedSetting() {
+  getData() {
+    d3.csv(csv).then(data => this.renderChart(data));
     fetch(md)
       .then(res => res.text())
       .then(text => this.setState({ markdown: text }));
-
-    // marked相关配置
-    marked.setOptions({
-      renderer: new marked.Renderer(),
-      gfm: true,
-      tables: true,
-      breaks: true,
-      pedantic: false,
-      sanitize: true,
-      smartLists: true,
-      smartypants: false,
-      highlight: function(code) {
-          return hljs.highlightAuto(code).value;
-      }
-    });
   }
 
   // 渲染图形
@@ -175,15 +158,10 @@ class Bar extends React.Component {
 
   render() {
     return (
-      <div class="content">
+      <div className="content">
         <h1>柱状图</h1>
         <div ref="chart-wrap"></div>
-        <div 
-          class="markdown-body"
-          dangerouslySetInnerHTML={{
-            __html: this.state.markdown ? marked(this.state.markdown) : null,
-          }} >
-        </div>
+        <Markdonw markdown={this.state.markdown}></Markdonw>
       </div>
     );
   }

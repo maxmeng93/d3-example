@@ -16,8 +16,10 @@ code {
 }
 
 .content {
+  box-sizing: border-box;
   width: 1100px;
-  margin: 0 auto;
+  min-height: calc(100vh - 40px);
+  margin: 20px auto;
   background: #fff;
   padding: 50px;
 }
