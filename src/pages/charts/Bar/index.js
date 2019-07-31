@@ -22,9 +22,17 @@ class Bar extends React.Component {
 
   getData() {
     d3.csv(csv).then(data => this.renderChart(data));
+
     fetch(md)
       .then(res => res.text())
       .then(text => this.setState({ markdown: text }));
+
+    fetch('http://localhost:3001/api/crawler/getChinaPopulation')
+      .then(res => res.json())
+      .then(text => {
+        console.log(text);
+      })
+
   }
 
   // 渲染图形
@@ -55,7 +63,7 @@ class Bar extends React.Component {
       buttons.filter(d => d === updateYear)
         .classed('selected', true);
 
-      popData = data.filter(e => e.year === updateYear); 
+      popData = data.filter(e => e.year === updateYear);
       bars.data(popData, keys)
         .transition()
         // .delay(500) // 动画延时
@@ -63,18 +71,18 @@ class Bar extends React.Component {
         // .ease(d3.easeBounce)
         .attr('width', d => x(d.value))
     }
-    
+
     var x = d3.scaleLinear()
       .domain([0, d3.max(data, function(d){ return d.value; })])
       .range([0, width]);
-    
+
     var y = d3.scaleBand()
       .domain(popData.map(function(d){ return d.age; }))
       .range([0, height])
       .paddingInner(0.25);
-    
+
     const chartWrap = d3.select(this.refs['chart-wrap']);
-    
+
     chartWrap.append('h2')
       .text('Age distribution of the world, ' + year);
 
@@ -84,7 +92,7 @@ class Bar extends React.Component {
       .text('▶ PLAY ALL YEARS')
       .on('click', function() {
         var i = 0;
-        
+
         playInterval = setInterval(function() {
           update(buttonYears[i]);
           i++;
@@ -112,7 +120,7 @@ class Bar extends React.Component {
         update(d);
         clearInterval(playInterval);
       });
-    
+
     chartWrap.append('div')
       .attr('class', 'top-label age-label')
       .append('p')
@@ -146,13 +154,13 @@ class Bar extends React.Component {
     var xAxis = d3.axisTop()
       .scale(x)
       .ticks(5, '%');
-    
+
     svg.append('g')
       .call(xAxis);
-    
+
     var yAxis = d3.axisLeft()
       .scale(y);
-    
+
     svg.append('g')
       .call(yAxis);
   }
