@@ -26,13 +26,6 @@ class Bar extends React.Component {
     fetch(md)
       .then(res => res.text())
       .then(text => this.setState({ markdown: text }));
-
-    fetch('http://localhost:3001/api/crawler/getChinaPopulation')
-      .then(res => res.json())
-      .then(text => {
-        console.log(text);
-      })
-
   }
 
   // 渲染图形
