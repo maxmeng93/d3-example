@@ -19,6 +19,7 @@ function Charts() {
         <li><Link to="/heatmap">热力图</Link></li>
         <li><Link to="/map">地图</Link></li>
         <li><Link to="/graph">关系图</Link></li>
+        <li><Link to="/tree_of_life">环形进化树图</Link></li>
       </ul>
     </div>
   );

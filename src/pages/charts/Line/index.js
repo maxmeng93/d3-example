@@ -27,10 +27,10 @@ class Line extends React.Component {
       .then(text => this.setState({ markdown: text }));
   }
 
-  renderChart(data) {
+  renderChart() {
     const chartWrap = d3.select(this.refs['chart-wrap']);
-    var superscript = '0123456789',
-      formatPower = function(d) {
+    var superscript = '0123456789';
+    var formatPower = function(d) {
         return (d + "")
           .split("")
           .map(function(c) {

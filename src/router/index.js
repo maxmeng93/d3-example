@@ -21,6 +21,7 @@ import Candlestick from '../pages/charts/Candlestick';
 import Heatmap from '../pages/charts/Heatmap';
 import Maps from '../pages/charts/Map';
 import Graph from '../pages/charts/Graph';
+import TreeOfLife from '../pages/charts/TreeOfLife';
 
 export default () => (
   <Router>
@@ -41,6 +42,7 @@ export default () => (
       <Route path="/heatmap" component={Heatmap} />
       <Route path="/map" component={Maps} />
       <Route path="/graph" component={Graph} />
+      <Route path="/tree_of_life" component={TreeOfLife} />
       <Route component={Error404} />
     </Switch>
   </Router>
