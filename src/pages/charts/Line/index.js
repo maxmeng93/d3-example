@@ -5,7 +5,7 @@ import * as d3 from "d3";
 import Markdonw from "@/components/Markdonw";
 
 import md from "./index.md";
-import "./index.css";
+import "./index.scss";
 
 class Line extends React.Component {
   constructor(props) {
@@ -101,7 +101,7 @@ class Line extends React.Component {
 
   render() {
     return (
-      <div className="content">
+      <div id="line" className="content">
         <span>
           <Link to="/">Home</Link>
         </span>

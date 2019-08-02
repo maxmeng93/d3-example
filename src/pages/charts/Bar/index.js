@@ -6,7 +6,7 @@ import Markdonw from '@/components/Markdonw';
 
 import md from './index.md';
 import csv from './index.csv';
-import './index.css';
+import './index.scss';
 
 class Bar extends React.Component {
   constructor(props) {
@@ -160,7 +160,7 @@ class Bar extends React.Component {
 
   render() {
     return (
-      <div className="content">
+      <div id="bar" className="content">
         <span><Link to="/">Home</Link></span>
         <h1>柱状图</h1>
         <div ref="chart-wrap"></div>
