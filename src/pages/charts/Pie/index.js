@@ -7,7 +7,7 @@ import Markdonw from '@/components/Markdonw';
 import md from './index.md';
 import csv from './population-by-age.csv';
 
-class Line extends React.Component {
+class Pie extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -90,4 +90,4 @@ class Line extends React.Component {
   }
 }
 
-export default Line;
+export default Pie;
