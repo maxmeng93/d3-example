@@ -29,7 +29,7 @@ class Pie extends React.Component {
 
   renderChart(data) {
     const chartWrap = d3.select(this.refs['chart-wrap']);
-    const width = 975;
+    const width = 1000;
     const height = 500;
     const radius = Math.min(width, height) / 2 * 0.8;
 
@@ -41,7 +41,7 @@ class Pie extends React.Component {
 
     let arc = d3.arc()
       .innerRadius(0)
-      .outerRadius(Math.min(width, height) / 2 - 1);
+      .outerRadius(Math.min(width, height) / 2);
 
     let color = d3.scaleOrdinal()
       .domain(data.map(d => d.name))

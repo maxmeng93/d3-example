@@ -21,7 +21,6 @@ class Line extends React.Component {
   }
 
   getData() {
-    // this.renderChart();
     fetch(dataURL)
       .then(res => res.text())
       .then(text => this.renderChart(text));
@@ -33,8 +32,6 @@ class Line extends React.Component {
 
   renderChart(data) {
     data = parseNewick(data);
-    console.log(data);
-    console.log(d3);
     const chartWrap = d3.select(this.refs['chart-wrap']);
     // 宽度
     var width = 964;
@@ -207,7 +204,7 @@ class Line extends React.Component {
       });
     }();
 
-    let showLength = true;
+    let showLength = false;
     chart.update(showLength);
 
     /* eslint-disable */
