@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as d3 from 'd3';
 
+import treeData from './data.json';
+
 class Line extends React.Component {
   componentDidMount() {
     this.getData();
   }
 
   getData() {
-    this.renderChart();
+    this.renderChart(treeData);
   }
 
-  renderChart() {
+  renderChart(data) {
     const width = 1000;
     const height = 900;
     const chartWrap = d3.select(this.refs['chart-wrap']);
@@ -35,6 +37,7 @@ class Line extends React.Component {
     }
 
     renderRing(list);
+    renderTree(data);
 
     // 渲染树图外围的环
     function renderRing(list) {
@@ -84,6 +87,11 @@ class Line extends React.Component {
             .call(text => text.append('tspan'))
               .text(d => { if (d.data.value === 0) return d.data.name; });
       });
+    }
+
+    // 渲染树图
+    function renderTree(data) {
+      console.log(data);
     }
   }
 
