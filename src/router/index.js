@@ -22,6 +22,7 @@ import Heatmap from '../pages/charts/Heatmap';
 import Maps from '../pages/charts/Map';
 import Graph from '../pages/charts/Graph';
 import TreeOfLife from '../pages/charts/TreeOfLife';
+import TaxonomicTree from '../pages/charts/TaxonomicTree';
 
 export default () => (
   <Router>
@@ -43,6 +44,7 @@ export default () => (
       <Route path="/map" component={Maps} />
       <Route path="/graph" component={Graph} />
       <Route path="/tree_of_life" component={TreeOfLife} />
+      <Route path="/taxonomic_tree" component={TaxonomicTree} />
       <Route component={Error404} />
     </Switch>
   </Router>

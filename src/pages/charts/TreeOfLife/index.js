@@ -32,6 +32,7 @@ class Line extends React.Component {
 
   renderChart(data) {
     data = parseNewick(data);
+    console.log(data);
     const chartWrap = d3.select(this.refs['chart-wrap']);
     // 宽度
     var width = 964;

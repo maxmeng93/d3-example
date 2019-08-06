@@ -1,0 +1,83 @@
+{
+  "Bacillaceae": {
+    "Anoxybacillus": {
+      "Aflavithermus": {}
+    },
+    "Bacillus": {
+      "Bamyloliquefaciens": {},
+      "Banthracis": {},
+      "Batrophaeus": {},
+      "Bcellulosilyticus": {},
+      "Bcereus": {},
+      "Bclausii": {},
+      "Bcoagulans": {},
+      "Bcoahuilensis": {},
+      "Bhalodurans": {},
+      "Blicheniformis": {},
+      "Bmegaterium": {},
+      "Bmycoides": {},
+      "Bpseudofirmus": {},
+      "Bpseudomycoides": {},
+      "Bpumilus": {},
+      "Bselenitireducens": {},
+      "Bsubtilis": {},
+      "Bthuringiensis": {},
+      "Bweihenstephanensis": {}
+    },
+    "Caldalkalibacillus": {
+      "Cthermarum": {}
+    },
+    "Geobacillus": {
+      "Gkaustophilus": {},
+      "Gthermodenitrificans": {},
+      "Gthermoglucosidasius": {}
+    },
+    "Lysinibacillus": {
+      "Lfusiformis": {},
+      "Lsphaericus": {}
+    },
+    "Oceanobacillus": {
+      "Oiheyensis": {}
+    }
+  },
+  "Listeriaceae": {
+    "Listeria": {
+      "Lgrayi": {},
+      "Linnocua": {},
+      "Lmonocytogenes": {},
+      "Lseeligeri": {},
+      "Lwelshimeri": {}
+    }
+  },
+  "Paenibacillaceae": {
+    "Brevibacillus": {
+      "Bbrevis": {},
+      "Blaterosporus": {}
+    },
+    "Paenibacillus": {
+      "Pcurdlanolyticus": {},
+      "Plarvae": {},
+      "Pmucilaginosus": {},
+      "Ppolymyxa": {},
+      "Pvortex": {}
+    }
+  },
+  "Staphylococcaceae": {
+    "Macrococcus": {
+      "Mcaseolyticus": {}
+    },
+    "Staphylococcus": {
+      "Saureus": {},
+      "Scapitis": {},
+      "Scaprae": {},
+      "Scarnosus": {},
+      "Sepidermidis": {},
+      "Shaemolyticus": {},
+      "Shominis": {},
+      "Slugdunensis": {},
+      "Spseudintermedius": {},
+      "Ssaprophyticus": {},
+      "Swarneri": {}
+    }
+  }
+}
