@@ -8,57 +8,10 @@ class Line extends React.Component {
   }
 
   getData() {
-    const res = {
-      setting: { // annot_0.txt 全局参数
-        clade_separation: 0.5,
-        branch_thickness: 1.5,
-        branch_bracket_depth: 0.8,
-        branch_bracket_width: 0.25,
-        clade_marker_size: 40,
-        clade_marker_edge_color: '#555555',
-        clade_marker_edge_width: 1.2
-      },
-      tree: { // 根据 annot_1.txt  annot_2.txt guide.txt 生成
-        annotation: '', // 名称
-        annotation_background_color: '', // 背景颜色
-        clade_marker_shape: '', // 点形状
-        clade_marker_size: '', // 点大小
-        clade_marker_color: '', // 点颜色
-        branchset: [
-          {
-            annotation: '', // 名称
-            annotation_background_color: '', // 背景颜色
-            clade_marker_shape: '', // 形状
-            clade_marker_size: '', // 大小
-            clade_marker_color: '', // 颜色
-            branchset: []
-          },
-          {  }
-        ]
-      },
-      ring: [ // 树图外围环 annot_3.txt
-        { // 第一圈
-          ring_width: 0.5,
-          ring_height: 0.75,
-          ring_internal_separator_thickness: 1,
-          data: [ // 每圈的数据数组
-            {
-              name: 'xxx',
-              value: 10
-            }
-          ]
-        },
-        { // 第二圈
-
-        }
-      ]
-    };
-    this.renderChart(res);
+    this.renderChart();
   }
 
-  renderChart(res) {
-    console.log(res);
-
+  renderChart() {
     const width = 1000;
     const height = 900;
     const chartWrap = d3.select(this.refs['chart-wrap']);
@@ -86,13 +39,11 @@ class Line extends React.Component {
     // 渲染树图外围的环
     function renderRing(list) {
       list.forEach((data, i) => {
-        const thickness = 10;
+        const thickness = 12;
         const min = Math.min(width, height) / 2;
         const innerRadius = min - (thickness * (i + 1));
         const outerRadius = min - (thickness * i);
-        let arc = d3.arc()
-          .innerRadius(innerRadius)
-          .outerRadius(outerRadius);
+        let arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
 
         // D3提供的6种单色调颜色方案
         const colorScheme = ['interpolateBlues', 'interpolateGreens', 'interpolateGreys', 'interpolateOranges', 'interpolatePurples', 'interpolateReds'];
@@ -121,6 +72,17 @@ class Line extends React.Component {
             .attr('d', arc)
           .append('title')
             .text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
+
+        svg.append('g')
+            .attr('font-family', 'sans-serif')
+            .attr('font-size', 10)
+            .attr('text-anchor', 'middle')
+          .selectAll('text')
+          .data(arcs)
+          .join('text')
+            .attr('transform', d => `translate(${arc.centroid(d)})`)
+            .call(text => text.append('tspan'))
+              .text(d => { if (d.data.value === 0) return d.data.name; });
       });
     }
   }

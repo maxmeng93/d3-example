@@ -1,83 +1,284 @@
 {
-  "Bacillaceae": {
-    "Anoxybacillus": {
-      "Aflavithermus": {}
+  "name": "",
+  "children": [
+    {
+      "name": "Bacillaceae",
+      "children": [
+        {
+          "name": "Anoxybacillus",
+          "children": [
+            {
+              "name": "Aflavithermus",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Bacillus",
+          "children": [
+            {
+              "name": "Bamyloliquefaciens",
+              "children": []
+            },
+            {
+              "name": "Banthracis",
+              "children": []
+            },
+            {
+              "name": "Batrophaeus",
+              "children": []
+            },
+            {
+              "name": "Bcellulosilyticus",
+              "children": []
+            },
+            {
+              "name": "Bcereus",
+              "children": []
+            },
+            {
+              "name": "Bclausii",
+              "children": []
+            },
+            {
+              "name": "Bcoagulans",
+              "children": []
+            },
+            {
+              "name": "Bcoahuilensis",
+              "children": []
+            },
+            {
+              "name": "Bhalodurans",
+              "children": []
+            },
+            {
+              "name": "Blicheniformis",
+              "children": []
+            },
+            {
+              "name": "Bmegaterium",
+              "children": []
+            },
+            {
+              "name": "Bmycoides",
+              "children": []
+            },
+            {
+              "name": "Bpseudofirmus",
+              "children": []
+            },
+            {
+              "name": "Bpseudomycoides",
+              "children": []
+            },
+            {
+              "name": "Bpumilus",
+              "children": []
+            },
+            {
+              "name": "Bselenitireducens",
+              "children": []
+            },
+            {
+              "name": "Bsubtilis",
+              "children": []
+            },
+            {
+              "name": "Bthuringiensis",
+              "children": []
+            },
+            {
+              "name": "Bweihenstephanensis",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Caldalkalibacillus",
+          "children": [
+            {
+              "name": "Cthermarum",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Geobacillus",
+          "children": [
+            {
+              "name": "Gkaustophilus",
+              "children": []
+            },
+            {
+              "name": "Gthermodenitrificans",
+              "children": []
+            },
+            {
+              "name": "Gthermoglucosidasius",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Lysinibacillus",
+          "children": [
+            {
+              "name": "Lfusiformis",
+              "children": []
+            },
+            {
+              "name": "Lsphaericus",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Oceanobacillus",
+          "children": [
+            {
+              "name": "Oiheyensis",
+              "children": []
+            }
+          ]
+        }
+      ]
     },
-    "Bacillus": {
-      "Bamyloliquefaciens": {},
-      "Banthracis": {},
-      "Batrophaeus": {},
-      "Bcellulosilyticus": {},
-      "Bcereus": {},
-      "Bclausii": {},
-      "Bcoagulans": {},
-      "Bcoahuilensis": {},
-      "Bhalodurans": {},
-      "Blicheniformis": {},
-      "Bmegaterium": {},
-      "Bmycoides": {},
-      "Bpseudofirmus": {},
-      "Bpseudomycoides": {},
-      "Bpumilus": {},
-      "Bselenitireducens": {},
-      "Bsubtilis": {},
-      "Bthuringiensis": {},
-      "Bweihenstephanensis": {}
+    {
+      "name": "Listeriaceae",
+      "children": [
+        {
+          "name": "Listeria",
+          "children": [
+            {
+              "name": "Lgrayi",
+              "children": []
+            },
+            {
+              "name": "Linnocua",
+              "children": []
+            },
+            {
+              "name": "Lmonocytogenes",
+              "children": []
+            },
+            {
+              "name": "Lseeligeri",
+              "children": []
+            },
+            {
+              "name": "Lwelshimeri",
+              "children": []
+            }
+          ]
+        }
+      ]
     },
-    "Caldalkalibacillus": {
-      "Cthermarum": {}
+    {
+      "name": "Paenibacillaceae",
+      "children": [
+        {
+          "name": "Brevibacillus",
+          "children": [
+            {
+              "name": "Bbrevis",
+              "children": []
+            },
+            {
+              "name": "Blaterosporus",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Paenibacillus",
+          "children": [
+            {
+              "name": "Pcurdlanolyticus",
+              "children": []
+            },
+            {
+              "name": "Plarvae",
+              "children": []
+            },
+            {
+              "name": "Pmucilaginosus",
+              "children": []
+            },
+            {
+              "name": "Ppolymyxa",
+              "children": []
+            },
+            {
+              "name": "Pvortex",
+              "children": []
+            }
+          ]
+        }
+      ]
     },
-    "Geobacillus": {
-      "Gkaustophilus": {},
-      "Gthermodenitrificans": {},
-      "Gthermoglucosidasius": {}
-    },
-    "Lysinibacillus": {
-      "Lfusiformis": {},
-      "Lsphaericus": {}
-    },
-    "Oceanobacillus": {
-      "Oiheyensis": {}
+    {
+      "name": "Staphylococcaceae",
+      "children": [
+        {
+          "name": "Macrococcus",
+          "children": [
+            {
+              "name": "Mcaseolyticus",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Staphylococcus",
+          "children": [
+            {
+              "name": "Saureus",
+              "children": []
+            },
+            {
+              "name": "Scapitis",
+              "children": []
+            },
+            {
+              "name": "Scaprae",
+              "children": []
+            },
+            {
+              "name": "Scarnosus",
+              "children": []
+            },
+            {
+              "name": "Sepidermidis",
+              "children": []
+            },
+            {
+              "name": "Shaemolyticus",
+              "children": []
+            },
+            {
+              "name": "Shominis",
+              "children": []
+            },
+            {
+              "name": "Slugdunensis",
+              "children": []
+            },
+            {
+              "name": "Spseudintermedius",
+              "children": []
+            },
+            {
+              "name": "Ssaprophyticus",
+              "children": []
+            },
+            {
+              "name": "Swarneri",
+              "children": []
+            }
+          ]
+        }
+      ]
     }
-  },
-  "Listeriaceae": {
-    "Listeria": {
-      "Lgrayi": {},
-      "Linnocua": {},
-      "Lmonocytogenes": {},
-      "Lseeligeri": {},
-      "Lwelshimeri": {}
-    }
-  },
-  "Paenibacillaceae": {
-    "Brevibacillus": {
-      "Bbrevis": {},
-      "Blaterosporus": {}
-    },
-    "Paenibacillus": {
-      "Pcurdlanolyticus": {},
-      "Plarvae": {},
-      "Pmucilaginosus": {},
-      "Ppolymyxa": {},
-      "Pvortex": {}
-    }
-  },
-  "Staphylococcaceae": {
-    "Macrococcus": {
-      "Mcaseolyticus": {}
-    },
-    "Staphylococcus": {
-      "Saureus": {},
-      "Scapitis": {},
-      "Scaprae": {},
-      "Scarnosus": {},
-      "Sepidermidis": {},
-      "Shaemolyticus": {},
-      "Shominis": {},
-      "Slugdunensis": {},
-      "Spseudintermedius": {},
-      "Ssaprophyticus": {},
-      "Swarneri": {}
-    }
-  }
+  ]
 }

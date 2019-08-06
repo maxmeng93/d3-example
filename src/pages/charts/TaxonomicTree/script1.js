@@ -16,11 +16,7 @@ fs.readFile(filePath, function(err, data) {
     formatter(tree, line);
   });
 
-  // for (let i in tree) {
-  //   console.log(tree[i]);
-  //   console.log(1);
-  // }
-  tree = formatter(tree)
+  tree = formatter1(tree)
 
   fs.writeFile('./data.json', JSON.stringify(tree, null, 2), function(err) {
     if (err) console.log(err);
@@ -43,6 +39,33 @@ function formatter(tree, line) {
   if (arr.length > 1) formatter(tree[arr[0]], line.slice(line.indexOf('.') + 1));
 }
 
-function formatter(tree) {
-  console.log(tree);
+/**
+ * 数据格式化
+ * @param {Object} tree
+ * 输入：{ a: { b: { } } }
+ * 输出：{ name: '', children: [ { name: a, children: [ { name: b, children: [] } ] } ] }
+ */
+function formatter1(tree) {
+  let data = {
+    name: '',
+    children: tree
+  };
+
+  data.children = formatter2(data.children);
+
+  return data;
+}
+
+function formatter2(children) {
+  const arr = [];
+  if (children instanceof Array) return children;
+  for (let k in children) {
+    let obj = {
+      name: k,
+      children: children[k]
+    };
+    obj.children = formatter2(obj.children);
+    arr.push(obj);
+  }
+  return arr;
 }
