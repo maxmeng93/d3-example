@@ -1,28 +1,28 @@
 {
   "name": "",
-  "children": [
+  "branchset": [
     {
       "name": "Bacillaceae",
-      "children": [
+      "branchset": [
         {
           "name": "Anoxybacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Aflavithermus",
-              "children": []
+              "branchset": []
             }
           ]
         },
         {
           "name": "Bacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Bamyloliquefaciens",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Banthracis",
-              "children": [],
+              "branchset": [],
               "clade_marker_color": "b",
               "clade_marker_size": "80",
               "annotation": "Bacillus anthracis",
@@ -30,80 +30,80 @@
             },
             {
               "name": "Batrophaeus",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "12"
             },
             {
               "name": "Bcellulosilyticus",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "8"
             },
             {
               "name": "Bcereus",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "3"
             },
             {
               "name": "Bclausii",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bcoagulans",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bcoahuilensis",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bhalodurans",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Blicheniformis",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bmegaterium",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "12"
             },
             {
               "name": "Bmycoides",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bpseudofirmus",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bpseudomycoides",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bpumilus",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "50"
             },
             {
               "name": "Bselenitireducens",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Bsubtilis",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "65",
               "annotation": "Bacillus subtilis",
               "annotation_background_color": "b"
             },
             {
               "name": "Bthuringiensis",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "10"
             },
             {
               "name": "Bweihenstephanensis",
-              "children": []
+              "branchset": []
             }
           ],
           "clade_marker_color": "b",
@@ -114,51 +114,51 @@
         },
         {
           "name": "Caldalkalibacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Cthermarum",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "15"
             }
           ]
         },
         {
           "name": "Geobacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Gkaustophilus",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Gthermodenitrificans",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Gthermoglucosidasius",
-              "children": []
+              "branchset": []
             }
           ]
         },
         {
           "name": "Lysinibacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Lfusiformis",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "174"
             },
             {
               "name": "Lsphaericus",
-              "children": []
+              "branchset": []
             }
           ]
         },
         {
           "name": "Oceanobacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Oiheyensis",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "95"
             }
           ]
@@ -172,29 +172,29 @@
     },
     {
       "name": "Listeriaceae",
-      "children": [
+      "branchset": [
         {
           "name": "Listeria",
-          "children": [
+          "branchset": [
             {
               "name": "Lgrayi",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Linnocua",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Lmonocytogenes",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Lseeligeri",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Lwelshimeri",
-              "children": []
+              "branchset": []
             }
           ]
         }
@@ -204,19 +204,19 @@
     },
     {
       "name": "Paenibacillaceae",
-      "children": [
+      "branchset": [
         {
           "name": "Brevibacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Bbrevis",
-              "children": [],
+              "branchset": [],
               "annotation": "a:Brevibacillus brevis",
               "annotation_background_color": "g"
             },
             {
               "name": "Blaterosporus",
-              "children": [],
+              "branchset": [],
               "annotation": "b:Brevibacillus laterosporus",
               "annotation_background_color": "g"
             }
@@ -226,32 +226,32 @@
         },
         {
           "name": "Paenibacillus",
-          "children": [
+          "branchset": [
             {
               "name": "Pcurdlanolyticus",
-              "children": [],
+              "branchset": [],
               "clade_marker_color": "#20DD20"
             },
             {
               "name": "Plarvae",
-              "children": [],
+              "branchset": [],
               "clade_marker_color": "#008000",
               "clade_marker_size": "89"
             },
             {
               "name": "Pmucilaginosus",
-              "children": [],
+              "branchset": [],
               "clade_marker_color": "#057005"
             },
             {
               "name": "Ppolymyxa",
-              "children": [],
+              "branchset": [],
               "clade_marker_color": "#009020",
               "clade_marker_size": "20"
             },
             {
               "name": "Pvortex",
-              "children": [],
+              "branchset": [],
               "clade_marker_color": "#00AA00",
               "clade_marker_size": "19"
             }
@@ -268,22 +268,22 @@
     },
     {
       "name": "Staphylococcaceae",
-      "children": [
+      "branchset": [
         {
           "name": "Macrococcus",
-          "children": [
+          "branchset": [
             {
               "name": "Mcaseolyticus",
-              "children": []
+              "branchset": []
             }
           ]
         },
         {
           "name": "Staphylococcus",
-          "children": [
+          "branchset": [
             {
               "name": "Saureus",
-              "children": [],
+              "branchset": [],
               "clade_marker_color": "r",
               "clade_marker_size": "125",
               "annotation": "S. aureus",
@@ -291,47 +291,47 @@
             },
             {
               "name": "Scapitis",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "36"
             },
             {
               "name": "Scaprae",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Scarnosus",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "75"
             },
             {
               "name": "Sepidermidis",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Shaemolyticus",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "64"
             },
             {
               "name": "Shominis",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Slugdunensis",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Spseudintermedius",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "19"
             },
             {
               "name": "Ssaprophyticus",
-              "children": []
+              "branchset": []
             },
             {
               "name": "Swarneri",
-              "children": [],
+              "branchset": [],
               "clade_marker_size": "33"
             }
           ],

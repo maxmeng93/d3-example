@@ -58,28 +58,28 @@ function parseGuide(data) {
    * 数据格式化
    * @param {Object} tree
    * 输入：{ a: { b: { } } }
-   * 输出：{ name: '', children: [ { name: a, children: [ { name: b, children: [] } ] } ] }
+   * 输出：{ name: '', branchset: [ { name: a, branchset: [ { name: b, branchset: [] } ] } ] }
    */
   function formatter1(tree) {
     let data = {
       name: '',
-      children: tree
+      branchset: tree
     };
 
-    data.children = formatter2(data.children);
+    data.branchset = formatter2(data.branchset);
 
     return data;
   }
 
-  function formatter2(children) {
+  function formatter2(branchset) {
     const arr = [];
-    if (children instanceof Array) return children;
-    for (let k in children) {
+    if (branchset instanceof Array) return branchset;
+    for (let k in branchset) {
       let obj = {
         name: k,
-        children: children[k]
+        branchset: branchset[k]
       };
-      obj.children = formatter2(obj.children);
+      obj.branchset = formatter2(obj.branchset);
       arr.push(obj);
     }
     return arr;
@@ -96,12 +96,12 @@ function parseAnnot1(data) {
 
   function setAttr(tree, line) {
     var arr = line.split(/\s/);
-    for (let i = 0; i < tree.children.length; i++) {
-      if (tree.children[i].name === arr[0]) {
-        tree.children[i][arr[1]] = arr[2];
+    for (let i = 0; i < tree.branchset.length; i++) {
+      if (tree.branchset[i].name === arr[0]) {
+        tree.branchset[i][arr[1]] = arr[2];
         return;
       }
-      setAttr(tree.children[i], line);
+      setAttr(tree.branchset[i], line);
     }
   }
 }
@@ -116,16 +116,16 @@ function parseAnnot2(data) {
 
   function setAttr(tree, line) {
     var arr = line.split(/\s/);
-    for (let i = 0; i < tree.children.length; i++) {
-      if (tree.children[i].name === arr[0]) {
+    for (let i = 0; i < tree.branchset.length; i++) {
+      if (tree.branchset[i].name === arr[0]) {
         if (arr[1] === 'annotation') {
-          tree.children[i][arr[1]] = line.slice(arr[0].length + arr[1].length + 2);
+          tree.branchset[i][arr[1]] = line.slice(arr[0].length + arr[1].length + 2);
         } else {
-          tree.children[i][arr[1]] = arr[2];
+          tree.branchset[i][arr[1]] = arr[2];
         }
         return;
       }
-      setAttr(tree.children[i], line);
+      setAttr(tree.branchset[i], line);
     }
   }
 }

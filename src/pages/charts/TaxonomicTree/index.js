@@ -26,14 +26,14 @@ class Line extends React.Component {
 
     for (let i = 0; i < 5; i++) {
       list.push([]);
-      for (let x = 0; x < 100; x++) {
+      for (let x = 0; x < 51; x++) {
         list[i].push({
           name: '样品' + (i+1),
           breadth:1,
           value: 1
         });
       }
-      list[i].push({name:'样品组' + (i+1), breadth:5, value: 0})
+      // list[i].push({name:'样品组' + (i+1), breadth:5, value: 0})
     }
 
     renderRing(list);
@@ -92,6 +92,158 @@ class Line extends React.Component {
     // 渲染树图
     function renderTree(data) {
       console.log(data);
+      // 外半径
+      var outerRadius = width / 2;
+      // 内半径
+      var innerRadius = outerRadius - 170;
+
+      let legend = svg => {
+        const g = svg
+          .selectAll("g")
+          .data(color.domain())
+          .join("g")
+          .attr("transform", (d, i) => `translate(${-outerRadius},${-outerRadius + i * 20 + 50})`);
+
+        g.append("rect")
+          .attr("width", 18)
+          .attr("height", 18)
+          .attr("fill", color);
+
+        g.append("text")
+          .attr("x", 24)
+          .attr("y", 9)
+          .attr("dy", "0.35em")
+          .text(d => d);
+      }
+
+      // 链接步骤
+      function linkStep(startAngle, startRadius, endAngle, endRadius) {
+        const c0 = Math.cos(startAngle = (startAngle - 90) / 180 * Math.PI);
+        const s0 = Math.sin(startAngle);
+        const c1 = Math.cos(endAngle = (endAngle - 90) / 180 * Math.PI);
+        const s1 = Math.sin(endAngle);
+        return "M" + startRadius * c0 + "," + startRadius * s0 +
+          (endAngle === startAngle ? "" : "A" + startRadius + "," + startRadius + " 0 0 " + (endAngle > startAngle ? 1 : 0) + " " + startRadius * c1 + "," + startRadius * s1) +
+          "L" + endRadius * c1 + "," + endRadius * s1;
+      }
+
+      function linkExtensionConstant(d) {
+        return linkStep(d.target.x, d.target.y, d.target.x, innerRadius);
+      }
+
+      function linkExtensionVariable(d) {
+        return linkStep(d.target.x, d.target.radius, d.target.x, innerRadius);
+      }
+
+      function linkConstant(d) {
+        return linkStep(d.source.x, d.source.y, d.target.x, d.target.y);
+      }
+
+      function linkVariable(d) {
+        return linkStep(d.source.x, d.source.radius, d.target.x, d.target.radius);
+      }
+
+      // 通过递归继承设置每个节点的颜色。
+      function setColor(d) {
+        var name = d.data.name;
+        d.color = color.domain().indexOf(name) >= 0 ? color(name) : d.parent ? d.parent.color : null;
+        if (d.children) d.children.forEach(setColor);
+      }
+
+      // 通过递归求和和缩放到根的距离来设置每个节点的半径。
+      function setRadius(d, y0, k) {
+        d.radius = (y0 += d.data.length) * k;
+        if (d.children) d.children.forEach(d => setRadius(d, y0, k));
+      }
+
+      // 计算树中任意节点的最大累积长度
+      function maxLength(d) {
+        return d.data.length + (d.children ? d3.max(d.children, maxLength) : 0);
+      }
+
+      // 颜色
+      let color = d3.scaleOrdinal()
+        .domain(["Bacillaceae", "Listeriaceae", "Paenibacillaceae", "Staphylococcaceae"])
+        .range(d3.schemeCategory10);
+
+      // 集群
+      const cluster = d3.cluster()
+        .size([360, innerRadius])
+        .separation((a, b) => 1);
+
+        let chart = function () {
+          const root = d3.hierarchy(data, d => d.branchset)
+            .sum(d => d.branchset ? 0 : 1)
+            .sort((a, b) => (a.value - b.value) || d3.ascending(a.data.length, b.data.length));
+
+          cluster(root);
+          setRadius(root, root.data.length = 0, innerRadius / maxLength(root));
+          setColor(root);
+
+          svg.append("g").call(legend);
+
+          svg.append("style").text(`
+            .link--active {
+              stroke: #000 !important;
+              stroke-width: 1.5px;
+            }
+
+            .link-extension--active {
+              stroke-opacity: .6;
+            }
+
+            .label--active {
+              font-weight: bold;
+            }
+          `);
+
+          const linkExtension = svg.append("g")
+            .attr("fill", "none")
+            .attr("stroke", "#000")
+            .attr("stroke-opacity", 0.25)
+            .selectAll("path")
+            .data(root.links().filter(d => !d.target.children))
+            .join("path")
+            .each(function (d) {
+              d.target.linkExtensionNode = this;
+            })
+            .attr("d", linkExtensionConstant);
+
+          const link = svg.append("g")
+            .attr("fill", "none")
+            .attr("stroke", "#000")
+            .selectAll("path")
+            .data(root.links())
+            .join("path")
+            .each(function (d) {
+              d.target.linkNode = this;
+            })
+            .attr("d", linkConstant)
+            .attr("stroke", d => d.target.color);
+
+          // 渲染每个分支的名称
+          // svg.append("g")
+          //   .selectAll("text")
+          //   .data(root.leaves())
+          //   .join("text")
+          //   .attr("dy", ".31em")
+          //   .attr("transform", d => `rotate(${d.x - 90}) translate(${innerRadius + 4},0)${d.x < 180 ? "" : " rotate(180)"}`)
+          //   .attr("text-anchor", d => d.x < 180 ? "start" : "end")
+          //   .text(d => d.data.name.replace(/_/g, " "));
+
+          function update(checked) {
+            const t = d3.transition().duration(750);
+            linkExtension.transition(t).attr("d", checked ? linkExtensionVariable : linkExtensionConstant);
+            link.transition(t).attr("d", checked ? linkVariable : linkConstant);
+          }
+
+          return Object.assign(svg.node(), {
+            update
+          });
+        }();
+
+        let showLength = false;
+        chart.update(showLength);
     }
   }
 
