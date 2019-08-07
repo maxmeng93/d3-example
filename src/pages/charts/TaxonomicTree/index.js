@@ -145,10 +145,6 @@ class Line extends React.Component {
           "L" + endRadius * c1 + "," + endRadius * s1;
       }
 
-      function linkExtensionConstant(d) {
-        return linkStep(d.target.x, d.target.y, d.target.x, innerRadius);
-      }
-
       function linkConstant(d) {
         return linkStep(d.source.x, d.source.y, d.target.x, d.target.y);
       }
@@ -189,34 +185,8 @@ class Line extends React.Component {
       setRadius(root, root.data.length = 0, innerRadius / maxLength(root));
       setColor(root);
 
+      // 设置左上角标注
       svg.append("g").call(legend);
-
-      svg.append("style").text(`
-        .link--active {
-          stroke: #000 !important;
-          stroke-width: 1.5px;
-        }
-
-        .link-extension--active {
-          stroke-opacity: .6;
-        }
-
-        .label--active {
-          font-weight: bold;
-        }
-      `);
-
-      const linkExtension = svg.append("g")
-        .attr("fill", "none")
-        .attr("stroke", "#000")
-        .attr("stroke-opacity", 0.25)
-        .selectAll("path")
-        .data(root.links().filter(d => !d.target.children))
-        .join("path")
-        .each(function (d) {
-          d.target.linkExtensionNode = this;
-        })
-        .attr("d", linkExtensionConstant);
 
       const link = svg.append("g")
         .attr("fill", "none")
@@ -239,14 +209,6 @@ class Line extends React.Component {
       //   .attr("transform", d => `rotate(${d.x - 90}) translate(${innerRadius + 4},0)${d.x < 180 ? "" : " rotate(180)"}`)
       //   .attr("text-anchor", d => d.x < 180 ? "start" : "end")
       //   .text(d => d.data.name.replace(/_/g, " "));
-
-      function update() {
-        const t = d3.transition().duration(750);
-        linkExtension.transition(t).attr("d", linkExtensionConstant);
-        link.transition(t).attr("d", linkConstant);
-      }
-
-      update();
     }
   }
 
