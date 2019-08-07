@@ -5,7 +5,7 @@ import Charts from '../components/Charts';
 function App() {
   return (
     <div className="content">
-      <h1>首页</h1>
+      <span><a href="https://blog.maxmeng.top/">返回博客</a></span>
       <Charts></Charts>
     </div>
   );

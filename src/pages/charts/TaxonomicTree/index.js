@@ -24,16 +24,27 @@ class Line extends React.Component {
 
     const list = [];
 
+    // 每一环有多少条数据
+    const length = 51;
+    // 角度：渲染每环名称的角度
+    const angle = 20;
+
     for (let i = 0; i < 5; i++) {
       list.push([]);
-      for (let x = 0; x < 51; x++) {
+      for (let x = 0; x < length; x++) {
         list[i].push({
           name: '样品' + (i+1),
           breadth:1,
           value: 1
         });
       }
-      // list[i].push({name:'样品组' + (i+1), breadth:5, value: 0})
+      // 20°占用几份
+      const breadth = (angle * length) / (360 - angle) ;
+      list[i].push({
+        name:'样品组' + (i+1),
+        breadth: breadth,
+        value: 0
+      });
     }
 
     renderRing(list);
@@ -46,7 +57,9 @@ class Line extends React.Component {
         const min = Math.min(width, height) / 2;
         const innerRadius = min - (thickness * (i + 1));
         const outerRadius = min - (thickness * i);
-        let arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+        let arc = d3.arc()
+          .innerRadius(innerRadius)
+          .outerRadius(outerRadius);
 
         // D3提供的6种单色调颜色方案
         const colorScheme = ['interpolateBlues', 'interpolateGreens', 'interpolateGreys', 'interpolateOranges', 'interpolatePurples', 'interpolateReds'];
@@ -91,7 +104,6 @@ class Line extends React.Component {
 
     // 渲染树图
     function renderTree(data) {
-      console.log(data);
       // 外半径
       var outerRadius = width / 2;
       // 内半径
@@ -116,7 +128,13 @@ class Line extends React.Component {
           .text(d => d);
       }
 
-      // 链接步骤
+      /**
+       * 连接2个点
+       * @param {*} startAngle 开始角度
+       * @param {*} startRadius 开始半径
+       * @param {*} endAngle 结束角度
+       * @param {*} endRadius 结束半径
+       */
       function linkStep(startAngle, startRadius, endAngle, endRadius) {
         const c0 = Math.cos(startAngle = (startAngle - 90) / 180 * Math.PI);
         const s0 = Math.sin(startAngle);
@@ -131,16 +149,8 @@ class Line extends React.Component {
         return linkStep(d.target.x, d.target.y, d.target.x, innerRadius);
       }
 
-      function linkExtensionVariable(d) {
-        return linkStep(d.target.x, d.target.radius, d.target.x, innerRadius);
-      }
-
       function linkConstant(d) {
         return linkStep(d.source.x, d.source.y, d.target.x, d.target.y);
-      }
-
-      function linkVariable(d) {
-        return linkStep(d.source.x, d.source.radius, d.target.x, d.target.radius);
       }
 
       // 通过递归继承设置每个节点的颜色。
@@ -168,82 +178,75 @@ class Line extends React.Component {
 
       // 集群
       const cluster = d3.cluster()
-        .size([360, innerRadius])
+        .size([360 - angle, innerRadius])
         .separation((a, b) => 1);
 
-        let chart = function () {
-          const root = d3.hierarchy(data, d => d.branchset)
-            .sum(d => d.branchset ? 0 : 1)
-            .sort((a, b) => (a.value - b.value) || d3.ascending(a.data.length, b.data.length));
+      const root = d3.hierarchy(data, d => d.branchset)
+        .sum(d => d.branchset ? 0 : 1)
+        .sort((a, b) => (a.value - b.value) || d3.ascending(a.data.length, b.data.length));
 
-          cluster(root);
-          setRadius(root, root.data.length = 0, innerRadius / maxLength(root));
-          setColor(root);
+      cluster(root);
+      setRadius(root, root.data.length = 0, innerRadius / maxLength(root));
+      setColor(root);
 
-          svg.append("g").call(legend);
+      svg.append("g").call(legend);
 
-          svg.append("style").text(`
-            .link--active {
-              stroke: #000 !important;
-              stroke-width: 1.5px;
-            }
+      svg.append("style").text(`
+        .link--active {
+          stroke: #000 !important;
+          stroke-width: 1.5px;
+        }
 
-            .link-extension--active {
-              stroke-opacity: .6;
-            }
+        .link-extension--active {
+          stroke-opacity: .6;
+        }
 
-            .label--active {
-              font-weight: bold;
-            }
-          `);
+        .label--active {
+          font-weight: bold;
+        }
+      `);
 
-          const linkExtension = svg.append("g")
-            .attr("fill", "none")
-            .attr("stroke", "#000")
-            .attr("stroke-opacity", 0.25)
-            .selectAll("path")
-            .data(root.links().filter(d => !d.target.children))
-            .join("path")
-            .each(function (d) {
-              d.target.linkExtensionNode = this;
-            })
-            .attr("d", linkExtensionConstant);
+      const linkExtension = svg.append("g")
+        .attr("fill", "none")
+        .attr("stroke", "#000")
+        .attr("stroke-opacity", 0.25)
+        .selectAll("path")
+        .data(root.links().filter(d => !d.target.children))
+        .join("path")
+        .each(function (d) {
+          d.target.linkExtensionNode = this;
+        })
+        .attr("d", linkExtensionConstant);
 
-          const link = svg.append("g")
-            .attr("fill", "none")
-            .attr("stroke", "#000")
-            .selectAll("path")
-            .data(root.links())
-            .join("path")
-            .each(function (d) {
-              d.target.linkNode = this;
-            })
-            .attr("d", linkConstant)
-            .attr("stroke", d => d.target.color);
+      const link = svg.append("g")
+        .attr("fill", "none")
+        .attr("stroke", "#000")
+        .selectAll("path")
+        .data(root.links())
+        .join("path")
+        .each(function (d) {
+          d.target.linkNode = this;
+        })
+        .attr("d", linkConstant)
+        .attr("stroke", d => d.target.color);
 
-          // 渲染每个分支的名称
-          // svg.append("g")
-          //   .selectAll("text")
-          //   .data(root.leaves())
-          //   .join("text")
-          //   .attr("dy", ".31em")
-          //   .attr("transform", d => `rotate(${d.x - 90}) translate(${innerRadius + 4},0)${d.x < 180 ? "" : " rotate(180)"}`)
-          //   .attr("text-anchor", d => d.x < 180 ? "start" : "end")
-          //   .text(d => d.data.name.replace(/_/g, " "));
+      // 渲染每个分支的名称
+      // svg.append("g")
+      //   .selectAll("text")
+      //   .data(root.leaves())
+      //   .join("text")
+      //   .attr("dy", ".31em")
+      //   .attr("transform", d => `rotate(${d.x - 90}) translate(${innerRadius + 4},0)${d.x < 180 ? "" : " rotate(180)"}`)
+      //   .attr("text-anchor", d => d.x < 180 ? "start" : "end")
+      //   .text(d => d.data.name.replace(/_/g, " "));
 
-          function update(checked) {
-            const t = d3.transition().duration(750);
-            linkExtension.transition(t).attr("d", checked ? linkExtensionVariable : linkExtensionConstant);
-            link.transition(t).attr("d", checked ? linkVariable : linkConstant);
-          }
+      function update() {
+        const t = d3.transition().duration(750);
+        linkExtension.transition(t).attr("d", linkExtensionConstant);
+        link.transition(t).attr("d", linkConstant);
+      }
 
-          return Object.assign(svg.node(), {
-            update
-          });
-        }();
-
-        let showLength = false;
-        chart.update(showLength);
+      update();
     }
   }
 
