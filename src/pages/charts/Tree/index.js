@@ -14,7 +14,6 @@ class Line extends React.Component {
   }
 
   renderChart(data) {
-    console.log(data);
     const width = 1000;
     const chartWrap = d3.select(this.refs['chart-wrap']);
 
