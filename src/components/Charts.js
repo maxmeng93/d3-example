@@ -10,7 +10,6 @@ function Charts() {
         <li><Link to="/bar">柱状/条形图</Link></li>
         <li><Link to="/pie">饼图</Link></li>
         <li><Link to="/scatter">散点图</Link></li>
-        <li><Link to="/radar">雷达图</Link></li>
         <li><Link to="/tree">树图</Link></li>
         <li><Link to="/treemap">矩形树图</Link></li>
         <li><Link to="/sunburst">旭日图</Link></li>

@@ -74,7 +74,7 @@ class Line extends React.Component {
       .join('circle')
         .attr('transform', d => `translate(${x(d.x)},${y(d.y)})`)
         .attr('r', 3);
-
+    console.log(dot);
     svg.call(brush).style('touch-action', 'none');
 
     function brushed() {
