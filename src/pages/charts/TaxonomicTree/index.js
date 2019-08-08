@@ -185,6 +185,11 @@ class Line extends React.Component {
       setRadius(root, root.data.length = 0, innerRadius / maxLength(root));
       setColor(root);
 
+      var nodes = root.descendants();
+      var links = root.links();
+      console.log(nodes);
+      console.log(links);
+
       // 设置左上角标注
       svg.append("g").call(legend);
 
@@ -209,6 +214,39 @@ class Line extends React.Component {
       //   .attr("transform", d => `rotate(${d.x - 90}) translate(${innerRadius + 4},0)${d.x < 180 ? "" : " rotate(180)"}`)
       //   .attr("text-anchor", d => d.x < 180 ? "start" : "end")
       //   .text(d => d.data.name.replace(/_/g, " "));
+    }
+
+    function renderPie(data) {
+      const innerRadius = 0;
+      const outerRadius = 100;
+            // 颜色
+            let color = d3.scaleOrdinal()
+            .domain(["Bacillaceae", "Listeriaceae", "Paenibacillaceae", "Staphylococcaceae"])
+            .range(d3.schemeCategory10);
+      let arc = d3.arc()
+          .innerRadius(innerRadius)
+          .outerRadius(outerRadius);
+          const pie = d3.pie()
+          .sort(null)
+          .value(d => d.breadth);
+
+        const arcs = pie(data);
+
+        svg.append('g')
+            .attr('stroke', 'white')
+          .selectAll('path')
+          .data(arcs)
+          .join('path')
+            .attr('fill', d => {
+              if (d.data.value) {
+                return color(Math.random());
+              } else {
+                return '#fff';
+              }
+            })
+            .attr('d', arc)
+          .append('title')
+            .text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
     }
   }
 
