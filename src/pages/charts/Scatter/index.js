@@ -18,7 +18,7 @@ class Line extends React.Component {
   }
 
   renderChart(data) {
-    console.log(data);
+    // console.log(data);
     const chartWrap = d3.select(this.refs['chart-wrap']);
     const width = 1000;
     const height = 600;
@@ -74,7 +74,7 @@ class Line extends React.Component {
       .join('circle')
         .attr('transform', d => `translate(${x(d.x)},${y(d.y)})`)
         .attr('r', 3);
-    console.log(dot);
+    // console.log(dot);
     svg.call(brush).style('touch-action', 'none');
 
     function brushed() {
