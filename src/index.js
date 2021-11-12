@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Routes from './router/';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import 'highlight.js/styles/github-gist.css';
+import 'highlight.js/styles/github.css';
 
 ReactDOM.render(<Routes />, document.getElementById('root'));
 
