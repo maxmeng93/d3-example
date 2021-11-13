@@ -2,6 +2,7 @@
   "name": "d3-example",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.maxmeng.top/d3-example/",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -9,7 +10,10 @@
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": {
     "production": [

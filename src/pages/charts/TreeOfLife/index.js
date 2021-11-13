@@ -196,6 +196,7 @@ class Line extends React.Component {
           d3.select(this).classed("label--active", active);
           d3.select(d.linkExtensionNode).classed("link-extension--active", active).raise();
           do d3.select(d.linkNode).classed("link--active", active).raise();
+          // eslint-disable-next-line
           while (d = d.parent);
         };
       }
@@ -211,7 +212,7 @@ class Line extends React.Component {
     /* eslint-disable */
     // 解析 Newick 格式数据
     // https://github.com/jasondavies/newick.js
-    function parseNewick(a){for(var e=[],r={},s=a.split(/\s*(;|\(|\)|,|:)\s*/),t=0;t<s.length;t++){var n=s[t];switch(n){case"(":var c={};r.branchset=[c],e.push(r),r=c;break;case",":var c={};e[e.length-1].branchset.push(c),r=c;break;case")":r=e.pop();break;case":":break;default:var h=s[t-1];")"==h||"("==h||","==h?r.name=n:":"==h&&(r.length=parseFloat(n))}}return r}
+    function parseNewick(a) { for (var e = [], r = {}, s = a.split(/\s*(;|\(|\)|,|:)\s*/), t = 0; t < s.length; t++) { var n = s[t]; switch (n) { case "(": var c = {}; r.branchset = [c], e.push(r), r = c; break; case ",": var c = {}; e[e.length - 1].branchset.push(c), r = c; break; case ")": r = e.pop(); break; case ":": break; default: var h = s[t - 1]; ")" == h || "(" == h || "," == h ? r.name = n : ":" == h && (r.length = parseFloat(n)) } } return r }
   }
 
   render() {

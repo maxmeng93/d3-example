@@ -23,6 +23,7 @@ import Graph from '../pages/charts/Graph';
 import TreeOfLife from '../pages/charts/TreeOfLife';
 import TaxonomicTree from '../pages/charts/TaxonomicTree';
 
+// eslint-disable-next-line
 export default () => (
   <Router>
     <Switch>
