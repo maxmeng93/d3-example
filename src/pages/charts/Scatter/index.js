@@ -78,13 +78,14 @@ class Line extends React.Component {
     svg.call(brush).style('touch-action', 'none');
 
     function brushed() {
-      let value = [];
-      d3.event.sourceEvent.preventDefault();
-      if (d3.event.selection) {
-        const [[x0, y0], [x1, y1]] = d3.event.selection;
-        value = data.filter(d => x0 <= x(d.x) && x(d.x) < x1 && y0 <= y(d.y) && y(d.y) < y1);
-      }
-      svg.property("value", value).dispatch("input");
+      // TODO: d3 event 已经被移除了
+      // let value = [];
+      // d3.event.sourceEvent.preventDefault();
+      // if (d3.event.selection) {
+      //   const [[x0, y0], [x1, y1]] = d3.event.selection;
+      //   value = data.filter(d => x0 <= x(d.x) && x(d.x) < x1 && y0 <= y(d.y) && y(d.y) < y1);
+      // }
+      // svg.property("value", value).dispatch("input");
     }
   }
 

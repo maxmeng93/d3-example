@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import * as d3 from 'd3';
 
 class Line extends React.Component {
   render() {
